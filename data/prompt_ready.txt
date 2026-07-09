@@ -1,0 +1,536 @@
+# Prompt de redacción — Informe semanal de mercado
+
+> Este es el prompt que convierte el JSON de datos en el texto del informe.
+> Se lo pasás a Claude (por la app o por API) junto con el contenido de
+> `data/latest.json`. El modelo **solo redacta** la parte de números: no
+> inventa cifras de mercado, usa las que están en el JSON. Para la sección
+> de Noticias (punto 8) sí necesita buscar en la web — asegurate de tener
+> la búsqueda activada en la conversación (o el tool `web_search` si vas
+> por API).
+
+---
+
+## System / rol
+
+Sos un analista de mercados de renta variable estadounidense que escribe un
+informe **de uso personal** para Nicolás (no va a clientes de Puente salvo que
+él decida adaptarlo después). Escribís en **español rioplatense**, tono
+profesional pero directo, sin adjetivos vacíos ni floritura. Cada afirmación
+cuantitativa sobre precios/mercado está respaldada por un número que aparece
+en los datos entregados. No inventás cifras de mercado ni extrapolás.
+
+## Reglas de estilo
+
+- Frases cortas. Un dato por frase cuando se pueda.
+- Siempre citá el número: "Financieros lideró (+3.8%)", no "Financieros tuvo una buena semana".
+- Nada de "cabe destacar", "es importante mencionar", "en un mundo donde".
+- No uses la palabra "robusto" ni "sólido" salvo que describa una métrica concreta.
+- Si un dato es ambiguo o el JSON lo trae en null, omitilo. No rellenes.
+- No des recomendaciones de compra/venta. Describís lo que pasó, no lo que hay que hacer.
+
+## Estructura de salida
+
+Redactá estas secciones, cada una de 2 a 4 frases, salvo el resumen ejecutivo
+que puede tener un párrafo más una lista de "claves de la semana":
+
+1. **Resumen ejecutivo** — qué hizo el S&P, régimen general, y una lista de 5-6 bullets con los datos clave (mejor/peor sector, amplitud, dólar, tasa 10y, balance agregado).
+2. **Panorama de mercado** — los cuatro índices, mejor y peor sesión, VIX.
+3. **Rotación sectorial** — líderes y rezagados, cíclicos vs. defensivos.
+4. **Amplitud** — suben/bajan, % sobre EMA50/200, si el índice y la acción promedio se movieron en línea.
+5. **Ganadores y perdedores** — mejor y peor de la semana, en qué sectores se concentran.
+6. **Divisas y macro** — movimiento del dólar, oro, WTI, bitcoin, tasa 10y.
+7. **Flujos / posicionamiento** — qué dicen los proxies de spread, volumen relativo.
+8. **Noticias de la semana** — ver instrucciones abajo.
+
+## Sobre la interpretación del "balance agregado"
+
+El campo `aggregate_score` (-100 a +100) es una heurística nuestra que combina
+rotación, amplitud, tendencia, crédito y dólar. Podés mencionarlo como lectura
+de régimen, pero aclarando que es un indicador propio, no consenso de mercado.
+
+## Sección 8 — Noticias de la semana
+
+**Esto requiere que tengas búsqueda web activada** (en claude.ai: el toggle
+de "Web search"; por API: el tool `web_search`). Buscá las noticias más
+relevantes de la semana que terminó el `week_end` del JSON (y, si estás
+redactando un lunes, incluí también lo que se viene en la semana entrante)
+en estas tres categorías:
+
+- **Geopolítica** — conflictos, sanciones, elecciones, decisiones de bancos
+  centrales fuera de EE.UU., cualquier evento con impacto en mercados
+  globales o en energía/commodities.
+- **Política monetaria y macro de EE.UU.** — declaraciones de la Fed,
+  sorpresas en datos económicos, decisiones judiciales o políticas que
+  afecten a la Fed o al Tesoro.
+- **Estructura de mercado y compañías** — altas/bajas de índices (ej. una
+  empresa que entra al Nasdaq 100 o al S&P 500), IPOs relevantes, M&A
+  grandes, cambios regulatorios a empresas específicas, resultados que
+  movieron mucho una acción.
+
+Para cada ítem: 1-2 frases, con la fecha si es relevante, y priorizá lo que
+tenga conexión directa con algo que ya viste en los datos de esta semana
+(ej. si tecnología cayó fuerte, buscá si hay una razón específica — ronda de
+ventas en semiconductores, un recorte de estimaciones, etc.). No hace falta
+que "certifiques" cada frase como si fuera para terceros — es para vos,
+Nicolás — pero sí mantené el estándar normal de citar bien las fuentes y no
+inventar nada que no hayas encontrado en la búsqueda.
+
+Si no tenés búsqueda web disponible en esa conversación, decilo explícitamente
+en vez de inventar noticias de memoria (tu conocimiento tiene fecha de corte
+y para esta sección específicamente necesitás información de esta semana).
+
+---
+
+## Datos de esta semana
+
+```json
+{
+  "meta": {
+    "week_end": "2026-07-03",
+    "generated_at": "2026-07-06T07:00:00",
+    "spx_week_return": 5.29,
+    "vix_close": 13.81,
+    "aggregate_score": -25
+  },
+  "indices": [
+    {
+      "ticker": "^GSPC",
+      "name": "S&P 500",
+      "week_return": 5.29,
+      "close": 126.68,
+      "daily_pattern": "-+++"
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq Composite",
+      "week_return": -0.07,
+      "close": 120.66,
+      "daily_pattern": "-·+-"
+    },
+    {
+      "ticker": "^DJI",
+      "name": "Dow Jones Industrial",
+      "week_return": -1.98,
+      "close": 75.28,
+      "daily_pattern": "·+-+"
+    },
+    {
+      "ticker": "^RUT",
+      "name": "Russell 2000",
+      "week_return": -1.36,
+      "close": 92.76,
+      "daily_pattern": "+---"
+    }
+  ],
+  "sector_rotation": {
+    "sectors": [
+      {
+        "etf": "XLV",
+        "name": "Salud",
+        "week_return": 4.68
+      },
+      {
+        "etf": "XLC",
+        "name": "Comunicaciones",
+        "week_return": 4.64
+      },
+      {
+        "etf": "XLF",
+        "name": "Financieros",
+        "week_return": 3.95
+      },
+      {
+        "etf": "XLU",
+        "name": "Servicios públicos",
+        "week_return": 2.95
+      },
+      {
+        "etf": "XLB",
+        "name": "Materiales",
+        "week_return": 1.12
+      },
+      {
+        "etf": "XLP",
+        "name": "Consumo básico",
+        "week_return": 0.86
+      },
+      {
+        "etf": "XLY",
+        "name": "Consumo discrecional",
+        "week_return": 0.16
+      },
+      {
+        "etf": "XLI",
+        "name": "Industriales",
+        "week_return": -0.66
+      },
+      {
+        "etf": "XLE",
+        "name": "Energía",
+        "week_return": -0.69
+      },
+      {
+        "etf": "XLK",
+        "name": "Tecnología",
+        "week_return": -2.04
+      },
+      {
+        "etf": "XLRE",
+        "name": "Inmobiliario",
+        "week_return": -2.45
+      }
+    ],
+    "n_positive": 7,
+    "n_total": 11,
+    "cyclical_minus_defensive": -1.21
+  },
+  "breadth": {
+    "up": 70,
+    "down": 47,
+    "flat": 3,
+    "pct_positive": 58.0,
+    "mean_company_return": 0.33,
+    "median_company_return": 0.41,
+    "mean_daily_breadth": 51.0,
+    "above_ema50": 77,
+    "above_ema50_pct": 64.0,
+    "above_ema200": 79,
+    "above_ema200_pct": 66.0,
+    "n_total": 120
+  },
+  "histogram": [
+    {
+      "bucket": "< -5%",
+      "count": 1
+    },
+    {
+      "bucket": "-5% a -2%",
+      "count": 19
+    },
+    {
+      "bucket": "-2% a 0%",
+      "count": 29
+    },
+    {
+      "bucket": "0% a +2%",
+      "count": 44
+    },
+    {
+      "bucket": "+2% a +5%",
+      "count": 24
+    },
+    {
+      "bucket": "> +5%",
+      "count": 3
+    }
+  ],
+  "winners_losers": {
+    "winners": [
+      {
+        "ticker": "C019",
+        "name": "Company 19",
+        "sector": "Real Estate",
+        "return": 5.7
+      },
+      {
+        "ticker": "C030",
+        "name": "Company 30",
+        "sector": "Real Estate",
+        "return": 5.6
+      },
+      {
+        "ticker": "C110",
+        "name": "Company 110",
+        "sector": "Industrials",
+        "return": 5.3
+      },
+      {
+        "ticker": "C062",
+        "name": "Company 62",
+        "sector": "Real Estate",
+        "return": 4.7
+      },
+      {
+        "ticker": "C066",
+        "name": "Company 66",
+        "sector": "Energy",
+        "return": 4.5
+      },
+      {
+        "ticker": "C082",
+        "name": "Company 82",
+        "sector": "Energy",
+        "return": 4.4
+      },
+      {
+        "ticker": "C044",
+        "name": "Company 44",
+        "sector": "Financials",
+        "return": 4.4
+      },
+      {
+        "ticker": "C022",
+        "name": "Company 22",
+        "sector": "Financials",
+        "return": 3.9
+      },
+      {
+        "ticker": "C034",
+        "name": "Company 34",
+        "sector": "Health Care",
+        "return": 3.8
+      },
+      {
+        "ticker": "C005",
+        "name": "Company 5",
+        "sector": "Technology",
+        "return": 3.6
+      }
+    ],
+    "losers": [
+      {
+        "ticker": "C106",
+        "name": "Company 106",
+        "sector": "Financials",
+        "return": -5.9
+      },
+      {
+        "ticker": "C031",
+        "name": "Company 31",
+        "sector": "Technology",
+        "return": -4.9
+      },
+      {
+        "ticker": "C059",
+        "name": "Company 59",
+        "sector": "Financials",
+        "return": -4.6
+      },
+      {
+        "ticker": "C107",
+        "name": "Company 107",
+        "sector": "Financials",
+        "return": -4.1
+      },
+      {
+        "ticker": "C104",
+        "name": "Company 104",
+        "sector": "Technology",
+        "return": -4.1
+      },
+      {
+        "ticker": "C055",
+        "name": "Company 55",
+        "sector": "Technology",
+        "return": -3.8
+      },
+      {
+        "ticker": "C007",
+        "name": "Company 7",
+        "sector": "Real Estate",
+        "return": -3.6
+      },
+      {
+        "ticker": "C100",
+        "name": "Company 100",
+        "sector": "Financials",
+        "return": -3.6
+      },
+      {
+        "ticker": "C111",
+        "name": "Company 111",
+        "sector": "Energy",
+        "return": -3.6
+      },
+      {
+        "ticker": "C011",
+        "name": "Company 11",
+        "sector": "Industrials",
+        "return": -3.4
+      }
+    ]
+  },
+  "fx_macro": {
+    "fx": [
+      {
+        "name": "Euro",
+        "pair": "EURUSD",
+        "close": 129.5025,
+        "week_return": -3.63
+      },
+      {
+        "name": "Libra esterlina",
+        "pair": "GBPUSD",
+        "close": 142.1543,
+        "week_return": 4.81
+      },
+      {
+        "name": "Yen japonés",
+        "pair": "USDJPY",
+        "close": 164.1624,
+        "week_return": 0.94
+      },
+      {
+        "name": "Franco suizo",
+        "pair": "USDCHF",
+        "close": 113.5572,
+        "week_return": -0.47
+      },
+      {
+        "name": "Dólar australiano",
+        "pair": "AUDUSD",
+        "close": 129.9491,
+        "week_return": 3.81
+      },
+      {
+        "name": "Dólar canadiense",
+        "pair": "USDCAD",
+        "close": 103.9652,
+        "week_return": -3.04
+      },
+      {
+        "name": "Yuan chino",
+        "pair": "USDCNY",
+        "close": 125.7789,
+        "week_return": 1.25
+      },
+      {
+        "name": "Peso mexicano",
+        "pair": "USDMXN",
+        "close": 149.5692,
+        "week_return": 1.98
+      },
+      {
+        "name": "Real brasileño",
+        "pair": "USDBRL",
+        "close": 92.4874,
+        "week_return": 3.27
+      }
+    ],
+    "macro": [
+      {
+        "name": "Oro",
+        "close": 126.65,
+        "week_return": -1.7
+      },
+      {
+        "name": "Petróleo WTI",
+        "close": 143.77,
+        "week_return": 0.8
+      },
+      {
+        "name": "Bitcoin",
+        "close": 102.47,
+        "week_return": -1.6
+      },
+      {
+        "name": "VIX (volatilidad)",
+        "close": 13.81,
+        "week_return": 1.8
+      },
+      {
+        "name": "Tasa 10 años EE.UU.",
+        "close": 4.38,
+        "change_bps": -0.0
+      }
+    ],
+    "usd_index_move": 1.2
+  },
+  "positioning": {
+    "proxies": [
+      {
+        "label": "Equiponderado - Cap-ponderado",
+        "spread": 1.34
+      },
+      {
+        "label": "Small caps - S&P 500",
+        "spread": -2.37
+      },
+      {
+        "label": "Alta beta - Baja volatilidad",
+        "spread": -5.91
+      },
+      {
+        "label": "Crédito HY - Treasuries largos",
+        "spread": -1.25
+      }
+    ],
+    "volume_note": -13
+  },
+  "econ_calendar": {
+    "last_readings": [
+      {
+        "label": "CPI interanual",
+        "period": "2026-06-01",
+        "value": 4.2,
+        "suffix": "%"
+      },
+      {
+        "label": "CPI Core interanual",
+        "period": "2026-06-01",
+        "value": 3.6,
+        "suffix": "%"
+      },
+      {
+        "label": "PPI interanual",
+        "period": "2026-06-01",
+        "value": 2.8,
+        "suffix": "%"
+      },
+      {
+        "label": "Nómina no agrícola (var. mensual)",
+        "period": "2026-06-01",
+        "value": 147,
+        "suffix": " mil"
+      },
+      {
+        "label": "Tasa de desempleo",
+        "period": "2026-06-01",
+        "value": 4.1,
+        "suffix": "%"
+      },
+      {
+        "label": "Ventas minoristas (m/m)",
+        "period": "2026-06-01",
+        "value": 0.3,
+        "suffix": "%"
+      },
+      {
+        "label": "PBI real (t/t anualizado)",
+        "period": "2026-03-01",
+        "value": 1.9,
+        "suffix": "%"
+      },
+      {
+        "label": "Solicitudes iniciales de desempleo",
+        "period": "2026-06-28",
+        "value": 231.0,
+        "suffix": " mil"
+      },
+      {
+        "label": "Tasa de fondos federales (efectiva)",
+        "period": "2026-07-08",
+        "value": 3.62,
+        "suffix": "%"
+      }
+    ],
+    "upcoming": [
+      {
+        "label": "Consumer Price Index (CPI)",
+        "date": "2026-07-14",
+        "note": "Fecha oficial (BLS)"
+      },
+      {
+        "label": "Solicitudes iniciales de desempleo",
+        "date": "2026-07-09",
+        "note": "Semanal, todos los jueves salvo feriado"
+      },
+      {
+        "label": "Solicitudes iniciales de desempleo",
+        "date": "2026-07-16",
+        "note": "Semanal, todos los jueves salvo feriado"
+      }
+    ]
+  }
+}
+```

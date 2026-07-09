@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor Semanal · S&P 500</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#111826; --panel2:#0e1420; --line:#1e2a3d;
+    --ink:#e6edf6; --muted:#8296b0; --dim:#5a6b85;
+    --up:#31c48d; --down:#f0616d; --flat:#5a6b85;
+    --accent:#f5b642; --accent-dim:#3a2f14;
+    --mono:'SFMono-Regular',ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+    --sans:'Inter',-apple-system,system-ui,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+
+  /* Header */
+  header{display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+  .brand{display:flex;flex-direction:column;gap:4px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent)}
+  h1{margin:0;font-size:26px;font-weight:650;letter-spacing:-.01em}
+  .subtitle{color:var(--muted);font-size:13px;font-family:var(--mono)}
+  .stamp{text-align:right;font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.7}
+  .stamp b{color:var(--muted);font-weight:500}
+
+  /* Score strip */
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;
+    overflow:hidden;margin-bottom:28px}
+  .cell{background:var(--panel);padding:14px 16px}
+  .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+  .cell .v{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.01em}
+  .cell .n{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+
+  /* Sections */
+  section{margin-bottom:34px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+  .sec-head h2{margin:0;font-size:15px;font-weight:600;letter-spacing:.02em;
+    text-transform:uppercase}
+  .sec-note{color:var(--muted);font-size:13px;margin:-6px 0 16px}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px}
+  th{text-align:left;font-weight:500;color:var(--dim);font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;
+    border-bottom:1px solid var(--line)}
+  td{padding:9px 12px;border-bottom:1px solid var(--panel2)}
+  tr:hover td{background:var(--panel2)}
+  .num{text-align:right}
+  .up{color:var(--up)} .down{color:var(--down)} .flat{color:var(--flat)}
+  .tk{color:var(--muted)}
+  .name-sans{font-family:var(--sans)}
+
+  /* Bar rows */
+  .barrow{display:grid;grid-template-columns:150px 44px 1fr 62px;align-items:center;
+    gap:10px;padding:5px 0;font-family:var(--mono);font-size:13px}
+  .barrow .lbl{color:var(--ink)}
+  .barrow .etf{color:var(--dim);font-size:11px}
+  .bartrack{position:relative;height:16px;background:var(--panel2);border-radius:3px}
+  .barfill{position:absolute;top:0;bottom:0;border-radius:3px}
+  .barfill.pos{background:var(--up);left:50%}
+  .barfill.neg{background:var(--down);right:50%}
+  .barmid{position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line)}
+
+  /* Histogram */
+  .histo{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end;
+    height:150px;margin-top:8px}
+  .hbar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+  .hbar .col{width:100%;border-radius:4px 4px 0 0;min-height:2px}
+  .hbar .cnt{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .hbar .rng{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:center}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}
+    .barrow{grid-template-columns:110px 40px 1fr 54px}}
+
+  .err{background:var(--accent-dim);border:1px solid var(--accent);border-radius:8px;
+    padding:20px;font-family:var(--mono);font-size:13px;color:var(--accent);line-height:1.7}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="app"><div class="err" id="loading">Cargando datos de <b>data/latest.json</b>…</div></div>
+</div>
+
+<script>
+const $ = (s,el=document)=>el.querySelector(s);
+const fmtPct = v => (v>0?'+':'')+v.toFixed(v%1===0?0:1)+'%';
+const cls = v => v>0.05?'up':v<-0.05?'down':'flat';
+const cn = num => num.toLocaleString('en-US');
+
+function scoreColor(s){ return s>15?'var(--up)':s<-15?'var(--down)':'var(--accent)'; }
+function scoreLabel(s){
+  if(s>40) return 'Apetito por riesgo amplio';
+  if(s>15) return 'Sesgo risk-on';
+  if(s>-15) return 'Equilibrio';
+  if(s>-40) return 'Sesgo defensivo';
+  return 'Aversión al riesgo';
+}
+
+function render(d){
+  const m = d.meta;
+  const el = document.createElement('div');
+
+  // ---- Header + strip ----
+  el.innerHTML = `
+    <header>
+      <div class="brand">
+        <span class="eyebrow">Monitor Semanal de Mercado</span>
+        <h1>Renta variable EE.UU.</h1>
+        <span class="subtitle">Semana al ${m.week_end}</span>
+      </div>
+      <div class="stamp">
+        Generado<br><b>${m.generated_at.replace('T',' ')}</b><br>
+        Fuente: Yahoo Finance (EOD)
+      </div>
+    </header>
+    <div class="strip">
+      <div class="cell"><div class="k">S&P 500 semana</div>
+        <div class="v ${cls(m.spx_week_return)}">${fmtPct(m.spx_week_return)}</div></div>
+      <div class="cell"><div class="k">VIX cierre</div>
+        <div class="v">${m.vix_close.toFixed(1)}</div></div>
+      <div class="cell"><div class="k">Amplitud positiva</div>
+        <div class="v">${d.breadth.pct_positive}%</div>
+        <div class="n">${d.breadth.up} sube / ${d.breadth.down} baja</div></div>
+      <div class="cell"><div class="k">Balance agregado</div>
+        <div class="v" style="color:${scoreColor(m.aggregate_score)}">${m.aggregate_score>0?'+':''}${m.aggregate_score}</div>
+        <div class="n">${scoreLabel(m.aggregate_score)}</div></div>
+    </div>`;
+
+  // ---- 01 Índices ----
+  const idxRows = d.indices.map(r=>`
+    <tr><td class="name-sans">${r.name}</td>
+      <td class="num ${cls(r.week_return)}">${fmtPct(r.week_return)}</td>
+      <td class="num tk">${cn(r.close)}</td>
+      <td class="num" style="letter-spacing:.15em">${r.daily_pattern}</td></tr>`).join('');
+
+  // ---- 02 Sectores (bars) ----
+  const maxSec = Math.max(...d.sector_rotation.sectors.map(s=>Math.abs(s.week_return)),1);
+  const secRows = d.sector_rotation.sectors.map(s=>{
+    const w = Math.abs(s.week_return)/maxSec*50;
+    const bar = s.week_return>=0
+      ? `<div class="barfill pos" style="width:${w}%"></div>`
+      : `<div class="barfill neg" style="width:${w}%"></div>`;
+    return `<div class="barrow"><span class="lbl">${s.name}</span>
+      <span class="etf">${s.etf}</span>
+      <div class="bartrack"><div class="barmid"></div>${bar}</div>
+      <span class="num ${cls(s.week_return)}">${fmtPct(s.week_return)}</span></div>`;
+  }).join('');
+
+  // ---- 03 Amplitud + histograma ----
+  const maxH = Math.max(...d.histogram.map(h=>h.count),1);
+  const histo = d.histogram.map((h,i)=>{
+    const up = i>=3;
+    return `<div class="hbar">
+      <span class="cnt">${h.count}</span>
+      <div class="col" style="height:${h.count/maxH*100}%;background:${up?'var(--up)':'var(--down)'}"></div>
+      <span class="rng">${h.bucket}</span></div>`;
+  }).join('');
+
+  // ---- 04 Ganadores/perdedores ----
+  const wl = d.winners_losers;
+  const wlRows = wl.winners.map((w,i)=>{
+    const l = wl.losers[i]||{};
+    return `<tr>
+      <td class="tk">${w.ticker}</td><td class="name-sans">${w.name}</td>
+      <td class="num up">${fmtPct(w.return)}</td>
+      <td class="tk">${l.ticker||''}</td><td class="name-sans">${l.name||''}</td>
+      <td class="num down">${l.return!=null?fmtPct(l.return):''}</td></tr>`;
+  }).join('');
+
+  // ---- 05 FX ----
+  const fxRows = d.fx_macro.fx.map(f=>`
+    <tr><td class="name-sans">${f.name}</td><td class="tk">${f.pair}</td>
+      <td class="num tk">${f.close}</td>
+      <td class="num ${cls(f.week_return)}">${fmtPct(f.week_return)}</td></tr>`).join('');
+
+  // ---- 06 Macro ----
+  const macroRows = d.fx_macro.macro.map(x=>{
+    const val = x.change_bps!=null
+      ? `<span class="${x.change_bps>0?'up':x.change_bps<0?'down':'flat'}">${x.change_bps>0?'+':''}${x.change_bps} bps</span>`
+      : `<span class="${cls(x.week_return)}">${fmtPct(x.week_return)}</span>`;
+    return `<tr><td class="name-sans">${x.name}</td>
+      <td class="num tk">${cn(x.close)}</td><td class="num">${val}</td></tr>`;
+  }).join('');
+
+  // ---- 07 Posicionamiento ----
+  const maxP = Math.max(...d.positioning.proxies.map(p=>Math.abs(p.spread)),1);
+  const posRows = d.positioning.proxies.map(p=>{
+    const w = Math.abs(p.spread)/maxP*50;
+    const bar = p.spread>=0
+      ? `<div class="barfill pos" style="width:${w}%"></div>`
+      : `<div class="barfill neg" style="width:${w}%"></div>`;
+    return `<div class="barrow"><span class="lbl">${p.label}</span><span class="etf"></span>
+      <div class="bartrack"><div class="barmid"></div>${bar}</div>
+      <span class="num ${cls(p.spread)}">${fmtPct(p.spread)}</span></div>`;
+  }).join('');
+
+  const sr = d.sector_rotation;
+  const br = d.breadth;
+  const volNote = d.positioning.volume_note;
+
+  el.innerHTML += `
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Índices</h2></div>
+      <table><thead><tr><th>Índice</th><th class="num">Semana</th>
+        <th class="num">Cierre</th><th class="num">L → V</th></tr></thead>
+        <tbody>${idxRows}</tbody></table>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Rotación sectorial</h2></div>
+      <p class="sec-note">${sr.n_positive} de ${sr.n_total} sectores en positivo · cíclicos vs. defensivos ${fmtPct(sr.cyclical_minus_defensive)}</p>
+      ${secRows}
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Amplitud del mercado</h2></div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="histo">${histo}</div>
+          <p class="sec-note" style="margin:14px 0 0">Distribución de retornos semanales (${br.n_total} compañías)</p>
+        </div>
+        <div class="panel">
+          <table>
+            <tr><td>Suben</td><td class="num up">${br.up}</td></tr>
+            <tr><td>Bajan</td><td class="num down">${br.down}</td></tr>
+            <tr><td>Planos</td><td class="num flat">${br.flat}</td></tr>
+            <tr><td>Retorno promedio</td><td class="num ${cls(br.mean_company_return)}">${fmtPct(br.mean_company_return)}</td></tr>
+            <tr><td>Mediana</td><td class="num ${cls(br.median_company_return)}">${fmtPct(br.median_company_return)}</td></tr>
+            <tr><td>Sobre EMA 50</td><td class="num">${br.above_ema50} (${br.above_ema50_pct}%)</td></tr>
+            <tr><td>Sobre EMA 200</td><td class="num">${br.above_ema200} (${br.above_ema200_pct}%)</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Ganadores y perdedores</h2></div>
+      <table><thead><tr>
+        <th></th><th>Mayores subas</th><th class="num">%</th>
+        <th></th><th>Mayores bajas</th><th class="num">%</th></tr></thead>
+        <tbody>${wlRows}</tbody></table>
+    </section>
+
+    <div class="grid2">
+      <section>
+        <div class="sec-head"><span class="sec-num">05</span><h2>Divisas</h2></div>
+        <p class="sec-note">Índice dólar ponderado ${fmtPct(d.fx_macro.usd_index_move)}</p>
+        <table><thead><tr><th>Divisa</th><th>Par</th>
+          <th class="num">Cierre</th><th class="num">Semana</th></tr></thead>
+          <tbody>${fxRows}</tbody></table>
+      </section>
+      <section>
+        <div class="sec-head"><span class="sec-num">06</span><h2>Macro global</h2></div>
+        <table><thead><tr><th>Activo</th><th class="num">Cierre</th>
+          <th class="num">Variación</th></tr></thead>
+          <tbody>${macroRows}</tbody></table>
+      </section>
+    </div>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">07</span><h2>Proxies de posicionamiento</h2></div>
+      ${volNote!=null?`<p class="sec-note">Volumen SPY ${volNote>0?'+':''}${volNote}% vs. promedio de 4 semanas previas</p>`:''}
+      ${posRows}
+    </section>
+
+    ${renderEconCalendar(d.econ_calendar)}
+
+    <div class="foot">
+      Datos de cierre (EOD) vía Yahoo Finance · cálculos determinísticos.<br>
+      El "balance agregado" es una heurística propia (rotación, amplitud, tendencia, crédito, dólar), no una recomendación de inversión.
+    </div>`;
+
+  return el;
+}
+
+function fmtPeriod(iso){
+  const [y,m] = iso.split('-');
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return `${meses[parseInt(m,10)-1]} ${y}`;
+}
+function fmtDate(iso){
+  const dt = new Date(iso+'T12:00:00');
+  const dias = ['dom','lun','mar','mié','jue','vie','sáb'];
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return `${dias[dt.getDay()]} ${dt.getDate()} ${meses[dt.getMonth()]}`;
+}
+function daysUntil(iso){
+  const dt = new Date(iso+'T12:00:00');
+  const today = new Date(); today.setHours(12,0,0,0);
+  const diff = Math.round((dt-today)/86400000);
+  if(diff===0) return 'hoy';
+  if(diff===1) return 'mañana';
+  if(diff<0) return '';
+  return `en ${diff}d`;
+}
+
+function renderEconCalendar(ec){
+  if(!ec) return '';
+  const readings = ec.last_readings||[];
+  const upcoming = ec.upcoming||[];
+  if(!readings.length && !upcoming.length) return '';
+
+  const readRows = readings.map(r=>`
+    <tr><td class="name-sans">${r.label}</td>
+      <td class="num tk">${fmtPeriod(r.period)}</td>
+      <td class="num">${r.value>0&&r.suffix==='%'?'+':''}${r.value}${r.suffix}</td></tr>`).join('');
+
+  const upRows = upcoming.map(u=>`
+    <tr><td class="name-sans">${u.label}</td>
+      <td class="tk">${fmtDate(u.date)}</td>
+      <td class="num" style="color:var(--accent)">${daysUntil(u.date)}</td></tr>`).join('');
+
+  return `
+    <section>
+      <div class="sec-head"><span class="sec-num">08</span><h2>Calendario económico</h2></div>
+      <p class="sec-note">Fechas oficiales de publicación; no incluye pronóstico de consenso (no hay fuente gratuita confiable para eso).</p>
+      <div class="grid2">
+        <div>
+          <h3 style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 8px">Últimos datos publicados</h3>
+          ${readings.length ? `<table><thead><tr><th>Indicador</th><th class="num">Período</th><th class="num">Valor</th></tr></thead>
+            <tbody>${readRows}</tbody></table>`
+            : `<p class="sec-note">Sin datos — configurá tu API key de FRED (ver LEEME.md).</p>`}
+        </div>
+        <div>
+          <h3 style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 8px">Próxima semana</h3>
+          ${upcoming.length ? `<table><thead><tr><th>Publicación</th><th>Fecha</th><th class="num"></th></tr></thead>
+            <tbody>${upRows}</tbody></table>`
+            : `<p class="sec-note">Sin publicaciones relevantes en los próximos 7 días.</p>`}
+        </div>
+      </div>
+    </section>`;
+}
+
+async function boot(){
+  try{
+    const res = await fetch('data/latest.json',{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    const app = $('#app'); app.innerHTML=''; app.appendChild(render(data));
+  }catch(e){
+    $('#app').innerHTML = `<div class="err">
+      No pude cargar <b>data/latest.json</b> (${e.message}).<br><br>
+      Si abriste el archivo con doble clic, el navegador bloquea la lectura local por seguridad.
+      Corré un servidor simple desde la carpeta del proyecto:<br><br>
+      &nbsp;&nbsp;<b>python -m http.server 8000</b><br><br>
+      y abrí <b>http://localhost:8000/dashboard.html</b></div>`;
+  }
+}
+boot();
+</script>
+</body>
+</html>
