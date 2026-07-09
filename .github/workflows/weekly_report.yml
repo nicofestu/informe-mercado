@@ -24,9 +24,20 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: Verificar qué secrets opcionales están cargados
+        id: check_secrets
+        env:
+          FRED_KEY: ${{ secrets.FRED_API_KEY }}
+          ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "has_fred=$([ -n "$FRED_KEY" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "has_anthropic=$([ -n "$ANTHROPIC_KEY" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
       - name: Configurar API key de FRED (opcional)
-        if: ${{ secrets.FRED_API_KEY != '' }}
-        run: echo "${{ secrets.FRED_API_KEY }}" > fred_api_key.txt
+        if: steps.check_secrets.outputs.has_fred == 'true'
+        env:
+          FRED_KEY: ${{ secrets.FRED_API_KEY }}
+        run: echo "$FRED_KEY" > fred_api_key.txt
 
       - name: Bajar datos y calcular métricas
         run: python build_data.py
@@ -35,7 +46,7 @@ jobs:
         run: python build_email.py
 
       - name: Redactar informe narrado (opcional, requiere ANTHROPIC_API_KEY paga)
-        if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        if: steps.check_secrets.outputs.has_anthropic == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python generate_report.py
