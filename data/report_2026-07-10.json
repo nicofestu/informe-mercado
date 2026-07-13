@@ -1,39 +1,39 @@
 {
   "meta": {
     "week_end": "2026-07-10",
-    "generated_at": "2026-07-09T22:40:04",
-    "spx_week_return": 0.81,
-    "vix_close": 15.84,
-    "aggregate_score": 27
+    "generated_at": "2026-07-13T13:24:52",
+    "spx_week_return": 1.23,
+    "vix_close": 15.03,
+    "aggregate_score": 32
   },
   "indices": [
     {
       "ticker": "^GSPC",
       "name": "S&P 500",
-      "week_return": 0.81,
-      "close": 7543.64,
-      "daily_pattern": "--+"
+      "week_return": 1.23,
+      "close": 7575.39,
+      "daily_pattern": "--++"
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq Composite",
-      "week_return": 1.45,
-      "close": 26206.89,
-      "daily_pattern": "-++"
+      "week_return": 1.74,
+      "close": 26281.61,
+      "daily_pattern": "-+++"
     },
     {
       "ticker": "^DJI",
       "name": "Dow Jones Industrial",
-      "week_return": -0.78,
-      "close": 52487.41,
-      "daily_pattern": "--+"
+      "week_return": -0.5,
+      "close": 52637.01,
+      "daily_pattern": "--++"
     },
     {
       "ticker": "^RUT",
       "name": "Russell 2000",
-      "week_return": -0.12,
-      "close": 2992.54,
-      "daily_pattern": "--+"
+      "week_return": -0.61,
+      "close": 2977.81,
+      "daily_pattern": "--+-"
     }
   ],
   "sector_rotation": {
@@ -41,101 +41,101 @@
       {
         "etf": "XLE",
         "name": "Energía",
-        "week_return": 3.01
+        "week_return": 3.49
       },
       {
         "etf": "XLK",
         "name": "Tecnología",
-        "week_return": 2.64
+        "week_return": 2.87
       },
       {
         "etf": "XLC",
         "name": "Comunicaciones",
-        "week_return": 0.83
+        "week_return": 1.86
       },
       {
         "etf": "XLF",
         "name": "Financieros",
-        "week_return": -0.14
+        "week_return": 0.16
       },
       {
         "etf": "XLY",
         "name": "Consumo discrecional",
-        "week_return": -0.23
-      },
-      {
-        "etf": "XLV",
-        "name": "Salud",
-        "week_return": -0.96
+        "week_return": 0.1
       },
       {
         "etf": "XLRE",
         "name": "Inmobiliario",
-        "week_return": -1.01
+        "week_return": -0.51
       },
       {
         "etf": "XLU",
         "name": "Servicios públicos",
-        "week_return": -1.38
-      },
-      {
-        "etf": "XLI",
-        "name": "Industriales",
-        "week_return": -1.52
+        "week_return": -0.76
       },
       {
         "etf": "XLP",
         "name": "Consumo básico",
-        "week_return": -2.11
+        "week_return": -1.02
+      },
+      {
+        "etf": "XLI",
+        "name": "Industriales",
+        "week_return": -1.08
+      },
+      {
+        "etf": "XLV",
+        "name": "Salud",
+        "week_return": -1.77
       },
       {
         "etf": "XLB",
         "name": "Materiales",
-        "week_return": -3.36
+        "week_return": -2.15
       }
     ],
-    "n_positive": 3,
+    "n_positive": 5,
     "n_total": 11,
-    "cyclical_minus_defensive": 1.43
+    "cyclical_minus_defensive": 1.58
   },
   "breadth": {
-    "up": 188,
-    "down": 312,
-    "flat": 3,
-    "pct_positive": 37.0,
-    "mean_company_return": -0.53,
-    "median_company_return": -0.9,
-    "mean_daily_breadth": 46.0,
-    "above_ema50": 320,
-    "above_ema50_pct": 64.0,
-    "above_ema200": 336,
-    "above_ema200_pct": 67.0,
+    "up": 213,
+    "down": 288,
+    "flat": 2,
+    "pct_positive": 42.0,
+    "mean_company_return": -0.16,
+    "median_company_return": -0.62,
+    "mean_daily_breadth": 52.0,
+    "above_ema50": 335,
+    "above_ema50_pct": 67.0,
+    "above_ema200": 349,
+    "above_ema200_pct": 69.0,
     "n_total": 503
   },
   "histogram": [
     {
       "bucket": "< -5%",
-      "count": 35
+      "count": 30
     },
     {
       "bucket": "-5% a -2%",
-      "count": 153
+      "count": 127
     },
     {
       "bucket": "-2% a 0%",
-      "count": 125
+      "count": 131
     },
     {
       "bucket": "0% a +2%",
-      "count": 82
+      "count": 103
     },
     {
       "bucket": "+2% a +5%",
-      "count": 72
+      "count": 68
     },
     {
       "bucket": "> +5%",
-      "count": 36
+      "count": 44
     }
   ],
   "winners_losers": {
@@ -144,123 +144,123 @@
         "ticker": "HPE",
         "name": "Hewlett Packard Enterprise",
         "sector": "Information Technology",
-        "return": 19.1
+        "return": 17.7
       },
       {
         "ticker": "ANET",
         "name": "Arista Networks",
         "sector": "Information Technology",
-        "return": 15.4
+        "return": 16.9
+      },
+      {
+        "ticker": "META",
+        "name": "Meta Platforms",
+        "sector": "Communication Services",
+        "return": 14.8
       },
       {
         "ticker": "AKAM",
         "name": "Akamai Technologies",
         "sector": "Information Technology",
-        "return": 14.4
-      },
-      {
-        "ticker": "DELL",
-        "name": "Dell Technologies",
-        "sector": "Information Technology",
-        "return": 14.2
-      },
-      {
-        "ticker": "NTAP",
-        "name": "NetApp",
-        "sector": "Information Technology",
-        "return": 11.4
-      },
-      {
-        "ticker": "AVGO",
-        "name": "Broadcom",
-        "sector": "Information Technology",
-        "return": 11.3
-      },
-      {
-        "ticker": "HPQ",
-        "name": "HP Inc.",
-        "sector": "Information Technology",
-        "return": 10.0
-      },
-      {
-        "ticker": "CIEN",
-        "name": "Ciena",
-        "sector": "Information Technology",
-        "return": 9.4
+        "return": 11.5
       },
       {
         "ticker": "STX",
         "name": "Seagate Technology",
         "sector": "Information Technology",
-        "return": 8.5
+        "return": 11.0
       },
       {
-        "ticker": "QCOM",
-        "name": "Qualcomm",
+        "ticker": "AVGO",
+        "name": "Broadcom",
         "sector": "Information Technology",
-        "return": 8.4
+        "return": 11.0
+      },
+      {
+        "ticker": "HPQ",
+        "name": "HP Inc.",
+        "sector": "Information Technology",
+        "return": 10.4
+      },
+      {
+        "ticker": "DELL",
+        "name": "Dell Technologies",
+        "sector": "Information Technology",
+        "return": 10.3
+      },
+      {
+        "ticker": "LITE",
+        "name": "Lumentum",
+        "sector": "Information Technology",
+        "return": 10.1
+      },
+      {
+        "ticker": "NTAP",
+        "name": "NetApp",
+        "sector": "Information Technology",
+        "return": 9.9
       }
     ],
     "losers": [
       {
-        "ticker": "BLDR",
-        "name": "Builders FirstSource",
-        "sector": "Industrials",
-        "return": -12.0
-      },
-      {
-        "ticker": "PSKY",
-        "name": "Paramount Skydance Corporation",
-        "sector": "Communication Services",
-        "return": -10.2
+        "ticker": "MRNA",
+        "name": "Moderna",
+        "sector": "Health Care",
+        "return": -14.4
       },
       {
         "ticker": "HONA",
         "name": "Honeywell Aerospace",
         "sector": "Industrials",
-        "return": -9.7
+        "return": -10.7
       },
       {
-        "ticker": "CINF",
-        "name": "Cincinnati Financial",
-        "sector": "Financials",
-        "return": -8.6
+        "ticker": "BLDR",
+        "name": "Builders FirstSource",
+        "sector": "Industrials",
+        "return": -10.6
       },
       {
-        "ticker": "BIIB",
-        "name": "Biogen",
-        "sector": "Health Care",
-        "return": -8.0
-      },
-      {
-        "ticker": "KDP",
-        "name": "Keurig Dr Pepper",
-        "sector": "Consumer Staples",
-        "return": -7.7
+        "ticker": "PSKY",
+        "name": "Paramount Skydance Corporation",
+        "sector": "Communication Services",
+        "return": -9.4
       },
       {
         "ticker": "ARE",
         "name": "Alexandria Real Estate Equities",
         "sector": "Real Estate",
-        "return": -7.7
+        "return": -8.9
       },
       {
-        "ticker": "PPG",
-        "name": "PPG Industries",
+        "ticker": "INTC",
+        "name": "Intel",
+        "sector": "Information Technology",
+        "return": -8.7
+      },
+      {
+        "ticker": "CPRT",
+        "name": "Copart",
+        "sector": "Industrials",
+        "return": -8.3
+      },
+      {
+        "ticker": "VRTX",
+        "name": "Vertex Pharmaceuticals",
+        "sector": "Health Care",
+        "return": -8.1
+      },
+      {
+        "ticker": "BIIB",
+        "name": "Biogen",
+        "sector": "Health Care",
+        "return": -7.9
+      },
+      {
+        "ticker": "IFF",
+        "name": "International Flavors & Fragrances",
         "sector": "Materials",
         "return": -7.5
-      },
-      {
-        "ticker": "PHM",
-        "name": "PulteGroup",
-        "sector": "Consumer Discretionary",
-        "return": -7.4
-      },
-      {
-        "ticker": "MAS",
-        "name": "Masco",
-        "sector": "Industrials",
-        "return": -7.4
       }
     ]
   },
@@ -269,83 +269,83 @@
       {
         "name": "Euro",
         "pair": "EURUSD",
-        "close": 1.1436,
-        "week_return": 0.12
+        "close": 1.1433,
+        "week_return": 0.09
       },
       {
         "name": "Libra esterlina",
         "pair": "GBPUSD",
-        "close": 1.3412,
-        "week_return": 0.55
+        "close": 1.3416,
+        "week_return": 0.58
       },
       {
         "name": "Yen japonés",
         "pair": "USDJPY",
-        "close": 162.365,
+        "close": 162.363,
         "week_return": 0.57
       },
       {
         "name": "Franco suizo",
         "pair": "USDCHF",
-        "close": 0.8067,
-        "week_return": 0.28
+        "close": 0.8065,
+        "week_return": 0.26
       },
       {
         "name": "Dólar australiano",
         "pair": "AUDUSD",
         "close": 0.6944,
-        "week_return": 0.4
+        "week_return": 0.41
       },
       {
         "name": "Dólar canadiense",
         "pair": "USDCAD",
-        "close": 1.4169,
-        "week_return": -0.15
+        "close": 1.4162,
+        "week_return": -0.2
       },
       {
         "name": "Yuan chino",
         "pair": "USDCNY",
-        "close": 6.7926,
-        "week_return": 0.06
+        "close": 6.7921,
+        "week_return": 0.05
       },
       {
         "name": "Peso mexicano",
         "pair": "USDMXN",
-        "close": 17.53,
-        "week_return": 0.31
+        "close": 17.5382,
+        "week_return": 0.35
       },
       {
         "name": "Real brasileño",
         "pair": "USDBRL",
-        "close": 5.1186,
-        "week_return": -1.98
+        "close": 5.1339,
+        "week_return": -1.69
       }
     ],
     "macro": [
       {
         "name": "Oro",
-        "close": 4131.9,
-        "week_return": 0.5
+        "close": 4104.1,
+        "week_return": -0.2
       },
       {
         "name": "Petróleo WTI",
-        "close": 71.74,
-        "week_return": 4.4
+        "close": 71.41,
+        "week_return": 4.0
       },
       {
         "name": "Bitcoin",
-        "close": 63242.64,
-        "week_return": 1.1
+        "close": 64127.14,
+        "week_return": 2.5
       },
       {
         "name": "VIX (volatilidad)",
-        "close": 15.84,
-        "week_return": -1.9
+        "close": 15.03,
+        "week_return": -6.9
       },
       {
         "name": "Tasa 10 años EE.UU.",
-        "close": 4.54,
-        "change_bps": 5.0
+        "close": 4.57,
+        "change_bps": 8.0
       }
     ],
     "usd_index_move": -0.1
@@ -354,22 +354,22 @@
     "proxies": [
       {
         "label": "Equiponderado - Cap-ponderado",
-        "spread": -1.59
+        "spread": -1.65
       },
       {
         "label": "Small caps - S&P 500",
-        "spread": -1.04
+        "spread": -1.9
       },
       {
         "label": "Alta beta - Baja volatilidad",
-        "spread": 2.81
+        "spread": 2.24
       },
       {
         "label": "Crédito HY - Treasuries largos",
-        "spread": 1.24
+        "spread": 1.22
       }
     ],
-    "volume_note": -30.0
+    "volume_note": -31.0
   },
   "econ_calendar": {
     "last_readings": [
@@ -423,17 +423,12 @@
       },
       {
         "label": "Tasa de fondos federales (efectiva)",
-        "period": "2026-07-08",
+        "period": "2026-07-09",
         "value": 3.62,
         "suffix": "%"
       }
     ],
     "upcoming": [
-      {
-        "label": "Solicitudes iniciales de desempleo",
-        "date": "2026-07-09",
-        "note": "Semanal, todos los jueves salvo feriado"
-      },
       {
         "label": "Solicitudes iniciales de desempleo",
         "date": "2026-07-16",
