@@ -1,0 +1,46 @@
+name: Informe semanal de mercado — actualizar datos
+
+# A partir de julio 2026 este workflow SOLO baja los datos de mercado y los
+# guarda en el repo. La redacción del informe (con noticias) y el envío
+# (Google Drive + borrador de Gmail) los hace un scheduled task de Claude
+# Cowork, que lee estos datos vía `git pull` un rato después de que este
+# workflow termine. Ver AUTOMATIZACION.md.
+
+on:
+  schedule:
+    # 11:00 UTC = 08:00 en Argentina (UTC-3, sin horario de verano) todos los lunes.
+    - cron: '0 11 * * 1'
+  workflow_dispatch: {}   # permite correrlo a mano desde la pestaña Actions, para probar
+
+permissions:
+  contents: write   # necesario para que el último paso pueda hacer git push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Configurar API key de FRED (opcional)
+        if: ${{ secrets.FRED_API_KEY != '' }}
+        run: echo "${{ secrets.FRED_API_KEY }}" > fred_api_key.txt
+
+      - name: Bajar datos y calcular métricas
+        run: python build_data.py
+
+      - name: Guardar datos actualizados en el repositorio
+        run: |
+          git config user.name "informe-bot"
+          git config user.email "actions@github.com"
+          git add data/latest.json "data/report_*.json" data/sp500_cache.csv || true
+          git diff --cached --quiet || git commit -m "Actualización semanal $(date +%F)"
+          git push
