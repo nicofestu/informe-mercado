@@ -1,7 +1,7 @@
 {
   "meta": {
     "week_end": "2026-07-10",
-    "generated_at": "2026-07-13T13:24:52",
+    "generated_at": "2026-07-14T00:37:26",
     "spx_week_return": 1.23,
     "vix_close": 15.03,
     "aggregate_score": 32
@@ -264,6 +264,635 @@
       }
     ]
   },
+  "sector_movers": {
+    "Industriales": {
+      "winners": [
+        {
+          "ticker": "VRT",
+          "name": "Vertiv",
+          "return": 6.1
+        },
+        {
+          "ticker": "ODFL",
+          "name": "Old Dominion",
+          "return": 4.6
+        },
+        {
+          "ticker": "PCAR",
+          "name": "Paccar",
+          "return": 4.2
+        },
+        {
+          "ticker": "EXPD",
+          "name": "Expeditors International",
+          "return": 2.7
+        },
+        {
+          "ticker": "XYL",
+          "name": "Xylem Inc.",
+          "return": 2.6
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "HONA",
+          "name": "Honeywell Aerospace",
+          "return": -10.7
+        },
+        {
+          "ticker": "BLDR",
+          "name": "Builders FirstSource",
+          "return": -10.6
+        },
+        {
+          "ticker": "CPRT",
+          "name": "Copart",
+          "return": -8.3
+        },
+        {
+          "ticker": "GNRC",
+          "name": "Generac",
+          "return": -7.4
+        },
+        {
+          "ticker": "MAS",
+          "name": "Masco",
+          "return": -6.0
+        }
+      ],
+      "n": 81
+    },
+    "Salud": {
+      "winners": [
+        {
+          "ticker": "DXCM",
+          "name": "Dexcom",
+          "return": 5.2
+        },
+        {
+          "ticker": "ZBH",
+          "name": "Zimmer Biomet",
+          "return": 4.4
+        },
+        {
+          "ticker": "A",
+          "name": "Agilent Technologies",
+          "return": 2.8
+        },
+        {
+          "ticker": "MCK",
+          "name": "McKesson Corporation",
+          "return": 2.5
+        },
+        {
+          "ticker": "COR",
+          "name": "Cencora",
+          "return": 2.3
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "MRNA",
+          "name": "Moderna",
+          "return": -14.4
+        },
+        {
+          "ticker": "VRTX",
+          "name": "Vertex Pharmaceuticals",
+          "return": -8.1
+        },
+        {
+          "ticker": "BIIB",
+          "name": "Biogen",
+          "return": -7.9
+        },
+        {
+          "ticker": "ABBV",
+          "name": "AbbVie",
+          "return": -5.0
+        },
+        {
+          "ticker": "COO",
+          "name": "Cooper Companies (The)",
+          "return": -4.7
+        }
+      ],
+      "n": 59
+    },
+    "Tecnología": {
+      "winners": [
+        {
+          "ticker": "HPE",
+          "name": "Hewlett Packard Enterprise",
+          "return": 17.7
+        },
+        {
+          "ticker": "ANET",
+          "name": "Arista Networks",
+          "return": 16.9
+        },
+        {
+          "ticker": "AKAM",
+          "name": "Akamai Technologies",
+          "return": 11.5
+        },
+        {
+          "ticker": "STX",
+          "name": "Seagate Technology",
+          "return": 11.0
+        },
+        {
+          "ticker": "AVGO",
+          "name": "Broadcom",
+          "return": 11.0
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "INTC",
+          "name": "Intel",
+          "return": -8.7
+        },
+        {
+          "ticker": "PANW",
+          "name": "Palo Alto Networks",
+          "return": -6.4
+        },
+        {
+          "ticker": "MRVL",
+          "name": "Marvell Technology",
+          "return": -3.8
+        },
+        {
+          "ticker": "APP",
+          "name": "AppLovin",
+          "return": -3.8
+        },
+        {
+          "ticker": "CRWD",
+          "name": "CrowdStrike",
+          "return": -3.5
+        }
+      ],
+      "n": 74
+    },
+    "Servicios públicos": {
+      "winners": [
+        {
+          "ticker": "VST",
+          "name": "Vistra Corp.",
+          "return": 5.2
+        },
+        {
+          "ticker": "CEG",
+          "name": "Constellation Energy",
+          "return": 5.1
+        },
+        {
+          "ticker": "NRG",
+          "name": "NRG Energy",
+          "return": 2.7
+        },
+        {
+          "ticker": "AES",
+          "name": "AES Corporation",
+          "return": 1.4
+        },
+        {
+          "ticker": "SRE",
+          "name": "Sempra",
+          "return": 1.2
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "AWK",
+          "name": "American Water Works",
+          "return": -4.5
+        },
+        {
+          "ticker": "WEC",
+          "name": "WEC Energy Group",
+          "return": -3.3
+        },
+        {
+          "ticker": "DUK",
+          "name": "Duke Energy",
+          "return": -3.2
+        },
+        {
+          "ticker": "PPL",
+          "name": "PPL Corporation",
+          "return": -3.0
+        },
+        {
+          "ticker": "CMS",
+          "name": "CMS Energy",
+          "return": -3.0
+        }
+      ],
+      "n": 31
+    },
+    "Financieros": {
+      "winners": [
+        {
+          "ticker": "CBOE",
+          "name": "Cboe Global Markets",
+          "return": 7.7
+        },
+        {
+          "ticker": "IVZ",
+          "name": "Invesco",
+          "return": 7.3
+        },
+        {
+          "ticker": "SCHW",
+          "name": "Charles Schwab Corporation",
+          "return": 6.3
+        },
+        {
+          "ticker": "STT",
+          "name": "State Street Corporation",
+          "return": 5.6
+        },
+        {
+          "ticker": "ARES",
+          "name": "Ares Management",
+          "return": 4.2
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "CINF",
+          "name": "Cincinnati Financial",
+          "return": -6.6
+        },
+        {
+          "ticker": "SYF",
+          "name": "Synchrony Financial",
+          "return": -5.1
+        },
+        {
+          "ticker": "COIN",
+          "name": "Coinbase",
+          "return": -3.9
+        },
+        {
+          "ticker": "CB",
+          "name": "Chubb Limited",
+          "return": -3.7
+        },
+        {
+          "ticker": "V",
+          "name": "Visa Inc.",
+          "return": -3.6
+        }
+      ],
+      "n": 76
+    },
+    "Materiales": {
+      "winners": [
+        {
+          "ticker": "CF",
+          "name": "CF Industries",
+          "return": 5.8
+        },
+        {
+          "ticker": "LYB",
+          "name": "LyondellBasell",
+          "return": 5.6
+        },
+        {
+          "ticker": "DOW",
+          "name": "Dow Inc.",
+          "return": 4.8
+        },
+        {
+          "ticker": "STLD",
+          "name": "Steel Dynamics",
+          "return": 3.6
+        },
+        {
+          "ticker": "NUE",
+          "name": "Nucor",
+          "return": 3.0
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "IFF",
+          "name": "International Flavors & Fragrances",
+          "return": -7.5
+        },
+        {
+          "ticker": "ALB",
+          "name": "Albemarle Corporation",
+          "return": -7.0
+        },
+        {
+          "ticker": "PPG",
+          "name": "PPG Industries",
+          "return": -6.8
+        },
+        {
+          "ticker": "SHW",
+          "name": "Sherwin-Williams",
+          "return": -5.2
+        },
+        {
+          "ticker": "APD",
+          "name": "Air Products",
+          "return": -4.7
+        }
+      ],
+      "n": 26
+    },
+    "Consumo discrecional": {
+      "winners": [
+        {
+          "ticker": "BBY",
+          "name": "Best Buy",
+          "return": 6.2
+        },
+        {
+          "ticker": "F",
+          "name": "Ford Motor Company",
+          "return": 4.8
+        },
+        {
+          "ticker": "ROST",
+          "name": "Ross Stores",
+          "return": 4.4
+        },
+        {
+          "ticker": "WYNN",
+          "name": "Wynn Resorts",
+          "return": 4.0
+        },
+        {
+          "ticker": "TSLA",
+          "name": "Tesla, Inc.",
+          "return": 3.6
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "LOW",
+          "name": "Lowe's",
+          "return": -7.0
+        },
+        {
+          "ticker": "PHM",
+          "name": "PulteGroup",
+          "return": -6.7
+        },
+        {
+          "ticker": "GPC",
+          "name": "Genuine Parts Company",
+          "return": -5.2
+        },
+        {
+          "ticker": "DHI",
+          "name": "D. R. Horton",
+          "return": -4.4
+        },
+        {
+          "ticker": "ORLY",
+          "name": "O’Reilly Automotive",
+          "return": -4.4
+        }
+      ],
+      "n": 47
+    },
+    "Inmobiliario": {
+      "winners": [
+        {
+          "ticker": "EQIX",
+          "name": "Equinix",
+          "return": 4.9
+        },
+        {
+          "ticker": "DLR",
+          "name": "Digital Realty",
+          "return": 4.1
+        },
+        {
+          "ticker": "CCI",
+          "name": "Crown Castle",
+          "return": 4.0
+        },
+        {
+          "ticker": "IRM",
+          "name": "Iron Mountain",
+          "return": 3.7
+        },
+        {
+          "ticker": "SBAC",
+          "name": "SBA Communications",
+          "return": 3.0
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "ARE",
+          "name": "Alexandria Real Estate Equities",
+          "return": -8.9
+        },
+        {
+          "ticker": "CSGP",
+          "name": "CoStar Group",
+          "return": -5.4
+        },
+        {
+          "ticker": "MAA",
+          "name": "Mid-America Apartment Communities",
+          "return": -4.9
+        },
+        {
+          "ticker": "VICI",
+          "name": "Vici Properties",
+          "return": -4.3
+        },
+        {
+          "ticker": "CPT",
+          "name": "Camden Property Trust",
+          "return": -3.7
+        }
+      ],
+      "n": 31
+    },
+    "Comunicaciones": {
+      "winners": [
+        {
+          "ticker": "META",
+          "name": "Meta Platforms",
+          "return": 14.8
+        },
+        {
+          "ticker": "TMUS",
+          "name": "T-Mobile US",
+          "return": 5.7
+        },
+        {
+          "ticker": "OMC",
+          "name": "Omnicom Group",
+          "return": 4.2
+        },
+        {
+          "ticker": "T",
+          "name": "AT&T",
+          "return": 4.0
+        },
+        {
+          "ticker": "NWSA",
+          "name": "News Corp (Class A)",
+          "return": 2.7
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "PSKY",
+          "name": "Paramount Skydance Corporation",
+          "return": -9.4
+        },
+        {
+          "ticker": "NFLX",
+          "name": "Netflix",
+          "return": -5.5
+        },
+        {
+          "ticker": "ECHO",
+          "name": "EchoStar",
+          "return": -5.4
+        },
+        {
+          "ticker": "TKO",
+          "name": "TKO Group Holdings",
+          "return": -5.2
+        },
+        {
+          "ticker": "CHTR",
+          "name": "Charter Communications",
+          "return": -4.7
+        }
+      ],
+      "n": 23
+    },
+    "Consumo básico": {
+      "winners": [
+        {
+          "ticker": "BG",
+          "name": "Bunge Global",
+          "return": 7.4
+        },
+        {
+          "ticker": "ADM",
+          "name": "Archer Daniels Midland",
+          "return": 4.7
+        },
+        {
+          "ticker": "KR",
+          "name": "Kroger",
+          "return": 4.0
+        },
+        {
+          "ticker": "TGT",
+          "name": "Target Corporation",
+          "return": 3.8
+        },
+        {
+          "ticker": "CASY",
+          "name": "Casey's",
+          "return": 2.8
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "KDP",
+          "name": "Keurig Dr Pepper",
+          "return": -4.9
+        },
+        {
+          "ticker": "PEP",
+          "name": "PepsiCo",
+          "return": -4.7
+        },
+        {
+          "ticker": "HSY",
+          "name": "Hershey Company (The)",
+          "return": -4.7
+        },
+        {
+          "ticker": "SJM",
+          "name": "J.M. Smucker Company (The)",
+          "return": -4.0
+        },
+        {
+          "ticker": "COST",
+          "name": "Costco",
+          "return": -3.7
+        }
+      ],
+      "n": 34
+    },
+    "Energía": {
+      "winners": [
+        {
+          "ticker": "BKR",
+          "name": "Baker Hughes",
+          "return": 9.1
+        },
+        {
+          "ticker": "OXY",
+          "name": "Occidental Petroleum",
+          "return": 8.1
+        },
+        {
+          "ticker": "PSX",
+          "name": "Phillips 66",
+          "return": 6.8
+        },
+        {
+          "ticker": "FANG",
+          "name": "Diamondback Energy",
+          "return": 6.6
+        },
+        {
+          "ticker": "MPC",
+          "name": "Marathon Petroleum",
+          "return": 6.5
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "EQT",
+          "name": "EQT Corporation",
+          "return": -7.1
+        },
+        {
+          "ticker": "EXE",
+          "name": "Expand Energy",
+          "return": -3.8
+        },
+        {
+          "ticker": "TPL",
+          "name": "Texas Pacific Land Corporation",
+          "return": -2.3
+        },
+        {
+          "ticker": "KMI",
+          "name": "Kinder Morgan",
+          "return": 0.2
+        },
+        {
+          "ticker": "XOM",
+          "name": "ExxonMobil",
+          "return": 1.3
+        }
+      ],
+      "n": 21
+    }
+  },
   "fx_macro": {
     "fx": [
       {
@@ -423,7 +1052,7 @@
       },
       {
         "label": "Tasa de fondos federales (efectiva)",
-        "period": "2026-07-09",
+        "period": "2026-07-10",
         "value": 3.62,
         "suffix": "%"
       }
