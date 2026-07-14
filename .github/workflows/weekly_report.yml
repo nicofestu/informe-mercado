@@ -21,6 +21,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
@@ -34,8 +36,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Configurar API key de FRED (opcional)
-        if: ${{ secrets.FRED_API_KEY != '' }}
-        run: echo "${{ secrets.FRED_API_KEY }}" > fred_api_key.txt
+        if: ${{ env.FRED_API_KEY != '' }}
+        run: echo "$FRED_API_KEY" > fred_api_key.txt
 
       - name: Bajar datos y calcular métricas
         run: python build_data.py
