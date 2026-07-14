@@ -1,9 +1,11 @@
 {
   "meta": {
     "week_end": "2026-07-10",
-    "generated_at": "2026-07-14T00:37:26",
+    "generated_at": "2026-07-14T01:44:08",
     "spx_week_return": 1.23,
     "vix_close": 15.03,
+    "y10_close": 4.57,
+    "y10_change_bps": 8.0,
     "aggregate_score": 32
   },
   "indices": [
@@ -978,6 +980,49 @@
       }
     ],
     "usd_index_move": -0.1
+  },
+  "fixed_income": {
+    "curve": [
+      {
+        "label": "3 meses",
+        "close": 3.69,
+        "change_bps": 3.0
+      },
+      {
+        "label": "5 años",
+        "close": 4.31,
+        "change_bps": 8.0
+      },
+      {
+        "label": "10 años",
+        "close": 4.57,
+        "change_bps": 8.0
+      },
+      {
+        "label": "30 años",
+        "close": 5.07,
+        "change_bps": 9.0
+      }
+    ],
+    "credit": [
+      {
+        "label": "Investment Grade (LQD)",
+        "close": 107.46,
+        "week_return": -1.09
+      },
+      {
+        "label": "High Yield (HYG)",
+        "close": 79.71,
+        "week_return": 0.0
+      },
+      {
+        "label": "Emergentes (EMB)",
+        "close": 95.99,
+        "week_return": -0.22
+      }
+    ],
+    "slope_10y_3m_bps": 87.0,
+    "slope_change_bps": 5.0
   },
   "positioning": {
     "proxies": [
