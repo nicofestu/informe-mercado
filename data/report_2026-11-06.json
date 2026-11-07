@@ -1,0 +1,1113 @@
+{
+  "meta": {
+    "week_end": "2026-11-06",
+    "generated_at": "2026-11-07T17:39:17",
+    "spx_week_return": -2.68,
+    "vix_close": 25.64,
+    "y10_close": 4.86,
+    "y10_change_bps": -7.0,
+    "aggregate_score": -9
+  },
+  "indices": [
+    {
+      "ticker": "^GSPC",
+      "name": "S&P 500",
+      "week_return": -2.68,
+      "close": 7376.86,
+      "daily_pattern": "++-+"
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq Composite",
+      "week_return": -3.37,
+      "close": 24579.43,
+      "daily_pattern": "++-+"
+    },
+    {
+      "ticker": "^DJI",
+      "name": "Dow Jones Industrial",
+      "week_return": -0.94,
+      "close": 51285.73,
+      "daily_pattern": "-+--"
+    },
+    {
+      "ticker": "^RUT",
+      "name": "Russell 2000",
+      "week_return": -2.05,
+      "close": 2754.11,
+      "daily_pattern": "++-+"
+    }
+  ],
+  "sector_rotation": {
+    "sectors": [
+      {
+        "etf": "XLC",
+        "name": "Comunicaciones",
+        "week_return": 4.89
+      },
+      {
+        "etf": "XLRE",
+        "name": "Inmobiliario",
+        "week_return": 1.92
+      },
+      {
+        "etf": "XLY",
+        "name": "Consumo discrecional",
+        "week_return": 1.91
+      },
+      {
+        "etf": "XLF",
+        "name": "Financieros",
+        "week_return": 1.15
+      },
+      {
+        "etf": "XLP",
+        "name": "Consumo básico",
+        "week_return": 0.74
+      },
+      {
+        "etf": "XLV",
+        "name": "Salud",
+        "week_return": -0.04
+      },
+      {
+        "etf": "XLU",
+        "name": "Servicios públicos",
+        "week_return": -0.69
+      },
+      {
+        "etf": "XLB",
+        "name": "Materiales",
+        "week_return": -1.5
+      },
+      {
+        "etf": "XLI",
+        "name": "Industriales",
+        "week_return": -2.83
+      },
+      {
+        "etf": "XLK",
+        "name": "Tecnología",
+        "week_return": -8.23
+      },
+      {
+        "etf": "XLE",
+        "name": "Energía",
+        "week_return": -12.0
+      }
+    ],
+    "n_positive": 5,
+    "n_total": 11,
+    "cyclical_minus_defensive": -4.06
+  },
+  "breadth": {
+    "up": 261,
+    "down": 238,
+    "flat": 4,
+    "pct_positive": 52.0,
+    "mean_company_return": -1.13,
+    "median_company_return": 0.27,
+    "mean_daily_breadth": 41.0,
+    "above_ema50": 305,
+    "above_ema50_pct": 61.0,
+    "above_ema200": 308,
+    "above_ema200_pct": 61.0,
+    "n_total": 503
+  },
+  "histogram": [
+    {
+      "bucket": "< -5%",
+      "count": 116
+    },
+    {
+      "bucket": "-5% a -2%",
+      "count": 53
+    },
+    {
+      "bucket": "-2% a 0%",
+      "count": 70
+    },
+    {
+      "bucket": "0% a +2%",
+      "count": 91
+    },
+    {
+      "bucket": "+2% a +5%",
+      "count": 100
+    },
+    {
+      "bucket": "> +5%",
+      "count": 73
+    }
+  ],
+  "winners_losers": {
+    "winners": [
+      {
+        "ticker": "APP",
+        "name": "AppLovin",
+        "sector": "Communication Services",
+        "return": 71.2
+      },
+      {
+        "ticker": "FISV",
+        "name": "Fiserv",
+        "sector": "Financials",
+        "return": 25.7
+      },
+      {
+        "ticker": "IDXX",
+        "name": "Idexx Laboratories",
+        "sector": "Health Care",
+        "return": 22.6
+      },
+      {
+        "ticker": "MOS",
+        "name": "Mosaic Company (The)",
+        "sector": "Materials",
+        "return": 21.6
+      },
+      {
+        "ticker": "ABNB",
+        "name": "Airbnb",
+        "sector": "Consumer Discretionary",
+        "return": 15.6
+      },
+      {
+        "ticker": "FSLR",
+        "name": "First Solar",
+        "sector": "Information Technology",
+        "return": 15.3
+      },
+      {
+        "ticker": "MRNA",
+        "name": "Moderna",
+        "sector": "Health Care",
+        "return": 14.6
+      },
+      {
+        "ticker": "TPR",
+        "name": "Tapestry, Inc.",
+        "sector": "Consumer Discretionary",
+        "return": 14.2
+      },
+      {
+        "ticker": "CLX",
+        "name": "Clorox",
+        "sector": "Consumer Staples",
+        "return": 13.6
+      },
+      {
+        "ticker": "CPAY",
+        "name": "Corpay",
+        "sector": "Financials",
+        "return": 13.5
+      }
+    ],
+    "losers": [
+      {
+        "ticker": "LITE",
+        "name": "Lumentum",
+        "sector": "Information Technology",
+        "return": -35.9
+      },
+      {
+        "ticker": "STX",
+        "name": "Seagate Technology",
+        "sector": "Information Technology",
+        "return": -28.5
+      },
+      {
+        "ticker": "MRVL",
+        "name": "Marvell Technology",
+        "sector": "Information Technology",
+        "return": -28.1
+      },
+      {
+        "ticker": "WDC",
+        "name": "Western Digital",
+        "sector": "Information Technology",
+        "return": -28.0
+      },
+      {
+        "ticker": "SNDK",
+        "name": "Sandisk",
+        "sector": "Information Technology",
+        "return": -27.4
+      },
+      {
+        "ticker": "AXON",
+        "name": "Axon Enterprise",
+        "sector": "Industrials",
+        "return": -26.8
+      },
+      {
+        "ticker": "FIS",
+        "name": "Fidelity National Information Services",
+        "sector": "Financials",
+        "return": -25.5
+      },
+      {
+        "ticker": "MCHP",
+        "name": "Microchip Technology",
+        "sector": "Information Technology",
+        "return": -24.6
+      },
+      {
+        "ticker": "CIEN",
+        "name": "Ciena",
+        "sector": "Information Technology",
+        "return": -24.1
+      },
+      {
+        "ticker": "DDOG",
+        "name": "Datadog",
+        "sector": "Information Technology",
+        "return": -23.9
+      }
+    ]
+  },
+  "sector_movers": {
+    "Industriales": {
+      "winners": [
+        {
+          "ticker": "SWK",
+          "name": "Stanley Black & Decker",
+          "return": 11.0
+        },
+        {
+          "ticker": "ROL",
+          "name": "Rollins, Inc.",
+          "return": 9.5
+        },
+        {
+          "ticker": "DAL",
+          "name": "Delta Air Lines",
+          "return": 8.8
+        },
+        {
+          "ticker": "UAL",
+          "name": "United Airlines Holdings",
+          "return": 8.2
+        },
+        {
+          "ticker": "GE",
+          "name": "GE Aerospace",
+          "return": 7.1
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "AXON",
+          "name": "Axon Enterprise",
+          "return": -26.8
+        },
+        {
+          "ticker": "VRT",
+          "name": "Vertiv",
+          "return": -21.4
+        },
+        {
+          "ticker": "FIX",
+          "name": "Comfort Systems USA",
+          "return": -17.5
+        },
+        {
+          "ticker": "BE",
+          "name": "Bloom Energy",
+          "return": -14.7
+        },
+        {
+          "ticker": "ROK",
+          "name": "Rockwell Automation",
+          "return": -13.8
+        }
+      ],
+      "n": 83
+    },
+    "Salud": {
+      "winners": [
+        {
+          "ticker": "IDXX",
+          "name": "Idexx Laboratories",
+          "return": 22.6
+        },
+        {
+          "ticker": "MRNA",
+          "name": "Moderna",
+          "return": 14.6
+        },
+        {
+          "ticker": "BAX",
+          "name": "Baxter International",
+          "return": 12.1
+        },
+        {
+          "ticker": "ZBH",
+          "name": "Zimmer Biomet",
+          "return": 11.7
+        },
+        {
+          "ticker": "SYK",
+          "name": "Stryker Corporation",
+          "return": 11.7
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "ILMN",
+          "name": "Illumina, Inc.",
+          "return": -9.7
+        },
+        {
+          "ticker": "CVS",
+          "name": "CVS Health",
+          "return": -7.1
+        },
+        {
+          "ticker": "CRL",
+          "name": "Charles River Laboratories",
+          "return": -6.1
+        },
+        {
+          "ticker": "LLY",
+          "name": "Lilly (Eli)",
+          "return": -4.5
+        },
+        {
+          "ticker": "DXCM",
+          "name": "Dexcom",
+          "return": -3.5
+        }
+      ],
+      "n": 60
+    },
+    "Tecnología": {
+      "winners": [
+        {
+          "ticker": "FSLR",
+          "name": "First Solar",
+          "return": 15.3
+        },
+        {
+          "ticker": "TYL",
+          "name": "Tyler Technologies",
+          "return": 6.7
+        },
+        {
+          "ticker": "ADSK",
+          "name": "Autodesk",
+          "return": 4.9
+        },
+        {
+          "ticker": "MSI",
+          "name": "Motorola Solutions",
+          "return": 4.7
+        },
+        {
+          "ticker": "GEN",
+          "name": "Gen Digital",
+          "return": 2.3
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "LITE",
+          "name": "Lumentum",
+          "return": -35.9
+        },
+        {
+          "ticker": "STX",
+          "name": "Seagate Technology",
+          "return": -28.5
+        },
+        {
+          "ticker": "MRVL",
+          "name": "Marvell Technology",
+          "return": -28.1
+        },
+        {
+          "ticker": "WDC",
+          "name": "Western Digital",
+          "return": -28.0
+        },
+        {
+          "ticker": "SNDK",
+          "name": "Sandisk",
+          "return": -27.4
+        }
+      ],
+      "n": 76
+    },
+    "Servicios públicos": {
+      "winners": [
+        {
+          "ticker": "AWK",
+          "name": "American Water Works",
+          "return": 4.1
+        },
+        {
+          "ticker": "NEE",
+          "name": "NextEra Energy",
+          "return": 3.9
+        },
+        {
+          "ticker": "D",
+          "name": "Dominion Energy",
+          "return": 3.0
+        },
+        {
+          "ticker": "AEE",
+          "name": "Ameren",
+          "return": 2.1
+        },
+        {
+          "ticker": "ES",
+          "name": "Eversource Energy",
+          "return": 1.9
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "VST",
+          "name": "Vistra Corp.",
+          "return": -9.8
+        },
+        {
+          "ticker": "SRE",
+          "name": "Sempra",
+          "return": -9.2
+        },
+        {
+          "ticker": "NRG",
+          "name": "NRG Energy",
+          "return": -7.6
+        },
+        {
+          "ticker": "CEG",
+          "name": "Constellation Energy",
+          "return": -4.7
+        },
+        {
+          "ticker": "CNP",
+          "name": "CenterPoint Energy",
+          "return": -4.2
+        }
+      ],
+      "n": 31
+    },
+    "Financieros": {
+      "winners": [
+        {
+          "ticker": "FISV",
+          "name": "Fiserv",
+          "return": 25.7
+        },
+        {
+          "ticker": "CPAY",
+          "name": "Corpay",
+          "return": 13.5
+        },
+        {
+          "ticker": "XYZ",
+          "name": "Block, Inc.",
+          "return": 12.1
+        },
+        {
+          "ticker": "JKHY",
+          "name": "Jack Henry & Associates",
+          "return": 7.4
+        },
+        {
+          "ticker": "BEN",
+          "name": "Franklin Resources",
+          "return": 6.6
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "FIS",
+          "name": "Fidelity National Information Services",
+          "return": -25.5
+        },
+        {
+          "ticker": "COIN",
+          "name": "Coinbase",
+          "return": -6.1
+        },
+        {
+          "ticker": "AIG",
+          "name": "American International Group",
+          "return": -5.1
+        },
+        {
+          "ticker": "HOOD",
+          "name": "Robinhood Markets",
+          "return": -4.8
+        },
+        {
+          "ticker": "GS",
+          "name": "Goldman Sachs",
+          "return": -3.2
+        }
+      ],
+      "n": 76
+    },
+    "Materiales": {
+      "winners": [
+        {
+          "ticker": "MOS",
+          "name": "Mosaic Company (The)",
+          "return": 21.6
+        },
+        {
+          "ticker": "NEM",
+          "name": "Newmont",
+          "return": 13.4
+        },
+        {
+          "ticker": "ALB",
+          "name": "Albemarle Corporation",
+          "return": 9.1
+        },
+        {
+          "ticker": "CRH",
+          "name": "CRH plc",
+          "return": 4.4
+        },
+        {
+          "ticker": "SHW",
+          "name": "Sherwin-Williams",
+          "return": 3.5
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "LYB",
+          "name": "LyondellBasell",
+          "return": -11.5
+        },
+        {
+          "ticker": "IFF",
+          "name": "International Flavors & Fragrances",
+          "return": -11.2
+        },
+        {
+          "ticker": "STLD",
+          "name": "Steel Dynamics",
+          "return": -11.1
+        },
+        {
+          "ticker": "NUE",
+          "name": "Nucor",
+          "return": -10.6
+        },
+        {
+          "ticker": "DOW",
+          "name": "Dow Inc.",
+          "return": -9.5
+        }
+      ],
+      "n": 24
+    },
+    "Consumo discrecional": {
+      "winners": [
+        {
+          "ticker": "ABNB",
+          "name": "Airbnb",
+          "return": 15.6
+        },
+        {
+          "ticker": "TPR",
+          "name": "Tapestry, Inc.",
+          "return": 14.2
+        },
+        {
+          "ticker": "WYNN",
+          "name": "Wynn Resorts",
+          "return": 11.3
+        },
+        {
+          "ticker": "LVS",
+          "name": "Las Vegas Sands",
+          "return": 11.1
+        },
+        {
+          "ticker": "BKNG",
+          "name": "Booking Holdings",
+          "return": 8.5
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "TSLA",
+          "name": "Tesla, Inc.",
+          "return": -10.4
+        },
+        {
+          "ticker": "APTV",
+          "name": "Aptiv",
+          "return": -10.2
+        },
+        {
+          "ticker": "EXPE",
+          "name": "Expedia Group",
+          "return": -9.3
+        },
+        {
+          "ticker": "RL",
+          "name": "Ralph Lauren Corporation",
+          "return": -4.2
+        },
+        {
+          "ticker": "TJX",
+          "name": "TJX Companies",
+          "return": -3.6
+        }
+      ],
+      "n": 47
+    },
+    "Inmobiliario": {
+      "winners": [
+        {
+          "ticker": "ARE",
+          "name": "Alexandria Real Estate Equities",
+          "return": 11.4
+        },
+        {
+          "ticker": "DOC",
+          "name": "Healthpeak Properties",
+          "return": 6.5
+        },
+        {
+          "ticker": "VMRK",
+          "name": "Vivmark Residential",
+          "return": 5.8
+        },
+        {
+          "ticker": "EXR",
+          "name": "Extra Space Storage",
+          "return": 5.2
+        },
+        {
+          "ticker": "CBRE",
+          "name": "CBRE Group",
+          "return": 5.2
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "IRM",
+          "name": "Iron Mountain",
+          "return": -8.6
+        },
+        {
+          "ticker": "DLR",
+          "name": "Digital Realty",
+          "return": -3.6
+        },
+        {
+          "ticker": "HST",
+          "name": "Host Hotels & Resorts",
+          "return": -2.7
+        },
+        {
+          "ticker": "CPT",
+          "name": "Camden Property Trust",
+          "return": -1.2
+        },
+        {
+          "ticker": "PLD",
+          "name": "Prologis",
+          "return": -0.8
+        }
+      ],
+      "n": 30
+    },
+    "Comunicaciones": {
+      "winners": [
+        {
+          "ticker": "APP",
+          "name": "AppLovin",
+          "return": 71.2
+        },
+        {
+          "ticker": "TTWO",
+          "name": "Take-Two Interactive",
+          "return": 13.0
+        },
+        {
+          "ticker": "OMC",
+          "name": "Omnicom Group",
+          "return": 6.3
+        },
+        {
+          "ticker": "CHTR",
+          "name": "Charter Communications",
+          "return": 5.9
+        },
+        {
+          "ticker": "FOX",
+          "name": "Fox Corporation (Class B)",
+          "return": 5.9
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "NWSA",
+          "name": "News Corp (Class A)",
+          "return": -9.4
+        },
+        {
+          "ticker": "NWS",
+          "name": "News Corp (Class B)",
+          "return": -8.8
+        },
+        {
+          "ticker": "ECHO",
+          "name": "EchoStar",
+          "return": -2.4
+        },
+        {
+          "ticker": "LYV",
+          "name": "Live Nation Entertainment",
+          "return": -1.5
+        },
+        {
+          "ticker": "META",
+          "name": "Meta Platforms",
+          "return": -0.8
+        }
+      ],
+      "n": 22
+    },
+    "Consumo básico": {
+      "winners": [
+        {
+          "ticker": "CLX",
+          "name": "Clorox",
+          "return": 13.6
+        },
+        {
+          "ticker": "HSY",
+          "name": "Hershey Company (The)",
+          "return": 7.5
+        },
+        {
+          "ticker": "BF-B",
+          "name": "Brown–Forman",
+          "return": 6.5
+        },
+        {
+          "ticker": "STZ",
+          "name": "Constellation Brands",
+          "return": 4.9
+        },
+        {
+          "ticker": "TSN",
+          "name": "Tyson Foods",
+          "return": 4.6
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "ADM",
+          "name": "Archer Daniels Midland",
+          "return": -9.0
+        },
+        {
+          "ticker": "SYY",
+          "name": "Sysco",
+          "return": -7.3
+        },
+        {
+          "ticker": "PM",
+          "name": "Philip Morris International",
+          "return": -5.2
+        },
+        {
+          "ticker": "MNST",
+          "name": "Monster Beverage",
+          "return": -3.4
+        },
+        {
+          "ticker": "VYLR",
+          "name": "Vylor",
+          "return": -3.1
+        }
+      ],
+      "n": 33
+    },
+    "Energía": {
+      "winners": [
+        {
+          "ticker": "EXE",
+          "name": "Expand Energy",
+          "return": -6.6
+        },
+        {
+          "ticker": "SLB",
+          "name": "Schlumberger",
+          "return": -7.1
+        },
+        {
+          "ticker": "CVX",
+          "name": "Chevron Corporation",
+          "return": -9.7
+        },
+        {
+          "ticker": "EQT",
+          "name": "EQT Corporation",
+          "return": -10.5
+        },
+        {
+          "ticker": "KMI",
+          "name": "Kinder Morgan",
+          "return": -10.8
+        }
+      ],
+      "losers": [
+        {
+          "ticker": "DVN",
+          "name": "Devon Energy",
+          "return": -19.1
+        },
+        {
+          "ticker": "TPL",
+          "name": "Texas Pacific Land Corporation",
+          "return": -17.9
+        },
+        {
+          "ticker": "MPC",
+          "name": "Marathon Petroleum",
+          "return": -16.2
+        },
+        {
+          "ticker": "TRGP",
+          "name": "Targa Resources",
+          "return": -16.0
+        },
+        {
+          "ticker": "FANG",
+          "name": "Diamondback Energy",
+          "return": -15.6
+        }
+      ],
+      "n": 21
+    }
+  },
+  "fx_macro": {
+    "fx": [
+      {
+        "name": "Euro",
+        "pair": "EURUSD",
+        "close": 1.1228,
+        "week_return": 0.41
+      },
+      {
+        "name": "Libra esterlina",
+        "pair": "GBPUSD",
+        "close": 1.3456,
+        "week_return": 0.58
+      },
+      {
+        "name": "Yen japonés",
+        "pair": "USDJPY",
+        "close": 157.498,
+        "week_return": -0.19
+      },
+      {
+        "name": "Franco suizo",
+        "pair": "USDCHF",
+        "close": 0.8154,
+        "week_return": -1.0
+      },
+      {
+        "name": "Dólar australiano",
+        "pair": "AUDUSD",
+        "close": 0.6931,
+        "week_return": -1.36
+      },
+      {
+        "name": "Dólar canadiense",
+        "pair": "USDCAD",
+        "close": 1.4017,
+        "week_return": 0.22
+      },
+      {
+        "name": "Yuan chino",
+        "pair": "USDCNY",
+        "close": 6.688,
+        "week_return": 0.41
+      },
+      {
+        "name": "Peso mexicano",
+        "pair": "USDMXN",
+        "close": 18.7809,
+        "week_return": -0.38
+      },
+      {
+        "name": "Real brasileño",
+        "pair": "USDBRL",
+        "close": 5.5035,
+        "week_return": 2.2
+      }
+    ],
+    "macro": [
+      {
+        "name": "Oro",
+        "close": 4074.9,
+        "week_return": 4.5
+      },
+      {
+        "name": "Petróleo WTI",
+        "close": 90.83,
+        "week_return": -12.8
+      },
+      {
+        "name": "Bitcoin",
+        "close": 75746.93,
+        "week_return": -1.9
+      },
+      {
+        "name": "VIX (volatilidad)",
+        "close": 25.64,
+        "week_return": 32.0
+      },
+      {
+        "name": "Tasa 10 años EE.UU.",
+        "close": 4.86,
+        "change_bps": -7.0
+      }
+    ],
+    "usd_index_move": -0.3
+  },
+  "fixed_income": {
+    "curve": [
+      {
+        "label": "3 meses",
+        "close": 4.0,
+        "change_bps": 3.0
+      },
+      {
+        "label": "5 años",
+        "close": 4.65,
+        "change_bps": -7.0
+      },
+      {
+        "label": "10 años",
+        "close": 4.86,
+        "change_bps": -7.0
+      },
+      {
+        "label": "30 años",
+        "close": 5.26,
+        "change_bps": -5.0
+      }
+    ],
+    "credit": [
+      {
+        "label": "Investment Grade (LQD)",
+        "close": 104.53,
+        "week_return": 0.25
+      },
+      {
+        "label": "High Yield (HYG)",
+        "close": 77.23,
+        "week_return": -0.26
+      },
+      {
+        "label": "Emergentes (EMB)",
+        "close": 91.96,
+        "week_return": -0.1
+      }
+    ],
+    "slope_10y_3m_bps": 86.0,
+    "slope_change_bps": -10.0
+  },
+  "positioning": {
+    "proxies": [
+      {
+        "label": "Equiponderado - Cap-ponderado",
+        "spread": 1.67
+      },
+      {
+        "label": "Small caps - S&P 500",
+        "spread": 0.68
+      },
+      {
+        "label": "Alta beta - Baja volatilidad",
+        "spread": -6.96
+      },
+      {
+        "label": "Crédito HY - Treasuries largos",
+        "spread": -0.36
+      }
+    ],
+    "volume_note": 69.0
+  },
+  "econ_calendar": {
+    "last_readings": [
+      {
+        "label": "CPI interanual",
+        "period": "2026-09-01",
+        "value": 3.72,
+        "suffix": "%"
+      },
+      {
+        "label": "CPI Core interanual",
+        "period": "2026-09-01",
+        "value": 2.57,
+        "suffix": "%"
+      },
+      {
+        "label": "PPI interanual",
+        "period": "2026-09-01",
+        "value": 12.84,
+        "suffix": "%"
+      },
+      {
+        "label": "Nómina no agrícola (var. mensual)",
+        "period": "2026-10-01",
+        "value": 165.0,
+        "suffix": " mil"
+      },
+      {
+        "label": "Tasa de desempleo",
+        "period": "2026-10-01",
+        "value": 4.1,
+        "suffix": "%"
+      },
+      {
+        "label": "Ventas minoristas (m/m)",
+        "period": "2026-09-01",
+        "value": 0.77,
+        "suffix": "%"
+      },
+      {
+        "label": "PBI real (t/t anualizado)",
+        "period": "2026-07-01",
+        "value": 3.4,
+        "suffix": "%"
+      },
+      {
+        "label": "Solicitudes iniciales de desempleo",
+        "period": "2026-10-31",
+        "value": 189.0,
+        "suffix": " mil"
+      },
+      {
+        "label": "Tasa de fondos federales (efectiva)",
+        "period": "2026-11-05",
+        "value": 3.88,
+        "suffix": "%"
+      }
+    ],
+    "upcoming": [
+      {
+        "label": "Solicitudes iniciales de desempleo",
+        "date": "2026-11-12",
+        "note": "Semanal, todos los jueves salvo feriado"
+      }
+    ]
+  }
+}
